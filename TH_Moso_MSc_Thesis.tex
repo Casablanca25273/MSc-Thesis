@@ -14,6 +14,7 @@
 \usepackage{hyperref,cleveref}
 \usepackage{cite}
 \usepackage{color}
+\usepackage{xcolor}
 %\usepackage{tikz}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -23,6 +24,18 @@
 \usepackage{gensymb}
 \usepackage{geometry}
 \usepackage{upgreek}
+
+% Colors for links
+\newcommand\myshade{85}
+\colorlet{mylinkcolor}{blue}
+\colorlet{mycitecolor}{orange}
+\colorlet{myurlcolor}{red}
+\hypersetup{
+  linkcolor  = mylinkcolor!\myshade!black,
+  citecolor  = mycitecolor!\myshade!black,
+  urlcolor   = myurlcolor!\myshade!black,
+  colorlinks = true,
+}
 
 % Define stuff here
 \def\albatros{ALBATROS}
