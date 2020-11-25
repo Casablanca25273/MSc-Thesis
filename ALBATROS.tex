@@ -30,46 +30,49 @@ All the front end electronic (FEE) components are incorporated into a double-sid
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Figures/balun}
-	\caption{Unenclosed FEE mounted on the pathfinder antenna supporting structure with the electronic components visible on the top part of the PCB.}
-	\label{Fig:balun}
-\end{figure}
-
-\begin{figure}
-	\begin{center}
+	\begin{subfigure}[t]{0.52\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/balun} 
+		\caption{} \label{Fig:balun}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.47\textwidth}
+		\centering
 		\includegraphics[width=\linewidth]{Figures/Balun_Block.png}
-		\caption{One Polarisation Block Diagram of the FEE \cite{2012PASP..124.1090H}}
-		\label{Fig:Balun Schematic}
-	\end{center}
+		\caption{} \label{Fig:Balun Schematic}
+	\end{subfigure}
+	\caption{{\bf (a)} Unenclosed FEE mounted on the pathfinder antenna supporting structure with the electronic components visible on the top part of the PCB. {\bf (b)} One Polarisation Block Diagram of the FEE \cite{2012PASP..124.1090H}} \label{Fig:fee}
 \end{figure}
 
 \subsection{Back-end Electronics}
 
-The back-end electronics are housed in the Faraday cage shown in Figure~\ref{fig:47093126504_fa0061a85b_o} denoted by the green dotted line box in Figure~\ref{Fig:albatros2_schem}. The analog signal chain consists of a Mini-Circuits ZX60-V63+ amplifier with a \SI{20}{\decibel} gain, and a pair of high- and low-pass filters (Mini-Circuits ZFHP-1R2+ and SLP-90+) that together band-limits the signal to \SIrange{1.2}{81}{\mega\hertz}. The amplifier operates at a frequency range of \SI{50}{\mega\hertz} - \SI{6}{\giga\hertz} and has a noise figure of $\sim$ 3.6 dB at its lowest operating frequency of \SI{\sim 50}{MHz}. The high- and low-pass filters present a nominal insertion loss of 0.2 dB and 0.14 dB at the center frequency of \SI{\sim10}{MHz}, respectively. 
+The back-end electronics are housed in the Faraday cage shown in Figure~\ref{Fig:47093126504_fa0061a85b_o} denoted by the green dotted line box in Figure~\ref{Fig:albatros2_schem}. The analog signal chain consists of a Mini-Circuits ZX60-V63+ amplifier with a \SI{20}{\decibel} gain, and a pair of high- and low-pass filters (Mini-Circuits ZFHP-1R2+ and SLP-90+) that together band-limits the signal to \SIrange{1.2}{81}{\mega\hertz}. The amplifier operates at a frequency range of \SI{50}{\mega\hertz} - \SI{6}{\giga\hertz} and has a noise figure of $\sim$ 3.6 dB at its lowest operating frequency of \SI{\sim 50}{MHz}. The high- and low-pass filters present a nominal insertion loss of 0.2 dB and 0.14 dB at the center frequency of \SI{\sim10}{MHz}, respectively. 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Figures/47093126504_fa0061a85b_o}
-	\caption{\albatros\ back-end electronics housed in the Faraday cage. One side of the mounting plate shows the amplifiers, pair of high- and low-pass filters, bias-tees, Valon 5007 frequency synthesizer module, RPi and Adafruit Ultimate GPS module. Component not visible on this side are mounted on the other side of the mounting plate.}
-	\label{fig:47093126504_fa0061a85b_o}
+	\begin{subfigure}[t]{0.52\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/47093126504_fa0061a85b_o} 
+		\caption{} \label{Fig:47093126504_fa0061a85b_o}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.47\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/47093128324_04792aa5c5_o}
+		\caption{} \label{Fig:47093128324_04792aa5c5_o}
+	\end{subfigure}
+	\caption{{\bf (a)} \albatros\ back-end electronics housed in the Faraday cage. One side of the mounting plate shows the amplifiers, pair of high- and low-pass filters, bias-tees, Valon 5007 frequency synthesizer module, RPi and Adafruit Ultimate GPS module. Component not visible on this side are mounted on the other side of the mounting plate. {\bf (b)} The bottom side of the \albatros\ Faraday cage, showing the mounted SNAP board and the regulatory circuit.} \label{Fig:faraday1}
 \end{figure}
 
-A Smart Network ADC Processor~\citep[SNAP;][]{2016JAI.....541001H} mounted in the Faraday cage in Figure~\ref{fig:47093128324_04792aa5c5_o} samples the signals it receives by \SI{250}{Msampl/s} using an internal analog to digital converters (ADCs), and the signals of the clock are from the Valon 5007 frequency synthesizer module. A frequency range between \SIrange{0}{125}{\mega\hertz} containing 2048 channels is created by the SNAP board, which also includes the onboard Xilinx Kintex~7\footnote{\url{http://www.xilinx.com/products/silicon-devices/fpga/kintex-7.html}} FPGA that computes auto and cross spectra from and between the four inputs. A Raspberry Pi (RPi) controls the SNAP board and saves data to an onboard SD-card. The RPi absolute timing is provided by Adafruit Ultimate GPS module\footnote{\url{https://www.adafruit.com/product/746}}, connected
+A Smart Network ADC Processor~\citep[SNAP;][]{2016JAI.....541001H} mounted in the Faraday cage in Figure~\ref{Fig:47093128324_04792aa5c5_o} samples the signals it receives by \SI{250}{Msampl/s} using an internal analog to digital converters (ADCs), and the signals of the clock are from the Valon 5007 frequency synthesizer module. A frequency range between \SIrange{0}{125}{\mega\hertz} containing 2048 channels is created by the SNAP board, which also includes the onboard Xilinx Kintex~7\footnote{\url{http://www.xilinx.com/products/silicon-devices/fpga/kintex-7.html}} FPGA that computes auto and cross spectra from and between the four inputs. A Raspberry Pi (RPi) controls the SNAP board and saves data to an onboard SD-card. The RPi absolute timing is provided by Adafruit Ultimate GPS module\footnote{\url{https://www.adafruit.com/product/746}}, connected
 to an active external GPS antenna.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\linewidth]{Figures/47093128324_04792aa5c5_o}
-	\caption{The bottom side of the \albatros\ Faraday cage, showing the mounted SNAP board and the regulatory circuit. }
-	\label{fig:47093128324_04792aa5c5_o}
-\end{figure}
 
 \subsection{Power}
 The two-element pathfinder system is powered using four \SI{12}{\volt} \SI{200}{\ampere\hour} battery bank wired in parallel and battery charging is performed manually using a Honda EU30is\footnote {\url{http://www.hondaenergy.com/generators/honda-eu30is.html}} generator and a fuel cache that is kept at the observing site. The main advantage and encouragement to use a SNAP board is its low power consumption, which is feasible for the power supply method. The total system power draw is \SI{\sim45}{\watt} and the pathfinder system can operate without interruption for $\sim$1 week when the batteries are fully charged. During observations, the batteries are connected to DC/DC converters powering the SNAP board, FEE, amplifiers, and the clock. The DC-DC converters are housed inside the Faraday cage and provide stable voltage outputs	despite the slow decline of the battery voltage.
 
 \section{Overview of Autonomous Stations}
 
-The final ALBATROS array will consist of ten autonomous antenna stations (huts) separated by baselines of \SI{\sim {20}}{km} as shown in \autoref{Fig:marion_map}. Marion Island huts, which are potential stations for the ALBATROS array, have a ring-like pattern which is appropriate for imaging and produces an FWHM synthesized beam of $7'$ at \SI{5}{\mega\hertz} as shown in \ref{fig:marion_map_beam}. The array beam promises an improved resolution over existing measurements to date. Thus far, the ALBATROS main goal will be to map high resolutions at low frequencies, which is crucial before doing cosmological observations of the dark ages. 
+The final ALBATROS array will consist of ten autonomous antenna stations (huts) separated by baselines of \SI{\sim {20}}{km} as shown in \autoref{Fig:marion_map}. Marion Island huts, which are potential stations for the ALBATROS array, have a ring-like pattern which is appropriate for imaging and produces an FWHM synthesized beam of $7'$ at \SI{5}{\mega\hertz} as shown in \ref{Fig:marion_map_beam}. The array beam promises an improved resolution over existing measurements to date. Thus far, the ALBATROS main goal will be to map high resolutions at low frequencies, which is crucial before doing cosmological observations of the dark ages. 
 
 In April 2019, I was part of the deployment team in Marion Island, and I am going to discuss in detail the tasks associated with \albatros\ that we managed to complete during the three weeks relief voyage.  
 
@@ -108,21 +111,12 @@ During the relief voyage, the installation process included mechanical assembly 
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\linewidth]{Figures/albatros_single_schematic.pdf}
-		\caption{Single-antenna autonomous station block diagram. A dual-polarization LWA antenna, equipped with an active front-end balun, connects via 50-m coaxial cables to the back-end readout electronics, housed in a Faraday cage denoted by the green dashed box. Each of the two antenna signals is passed to a second-stage electronics chain consisting of filters and further amplification.  The signals are digitized at 250~Msamp/s by a SNAP board, including an onboard FPGA that computes channelized baseband and spectra from both inputs.  A Raspberry Pi controls the SNAP board and receives the baseband data and spectra.  The baseband data are saved to external hard drives. The system is powered by solar panels that charge a 24-V battery bank.}
+		\caption{Single-antenna autonomous station block diagram. A dual-polarization LWA antenna, equipped with an active front-end balun, connects via 50-m coaxial cables to the back-end readout electronics, housed in a Faraday cage denoted by the green dashed box. Each of the two antenna signals is passed to a second-stage electronics chain consisting of filters and further amplification.  The signals are digitized at 250~Msamp/s by a SNAP board, including an onboard FPGA that computes channelized baseband and spectra from both inputs.  A Raspberry Pi controls the SNAP board and receives the baseband data and spectra. The baseband data are saved to external hard drives. The system is powered by solar panels that charge a 24-V battery bank.}
 		\label{Fig:albatros1_schem}
 	\end{center}
 \end{figure}
 
 \subsection{Back-end Electronics} 
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{Figures/46966493985_44aa8ac326_o}
-	\caption{The single autonomous station Faraday cage showing one side of the mounting plate with visible power distribution circuitry, Trimble Thunderbolt E GPS-disciplined clock module, external hard drives and the RPi.}
-	\label{fig:46966493985_44aa8ac326_o}
-\end{figure}
-
-The Faraday cage shown in Figure~\ref{fig:46966493985_44aa8ac326_o} denoted by the green dotted line box in Figure~\ref{Fig:albatros1_schem} is located \SI{50}{\meter} away from the antennas. The analog signal chain shown in Figure~\ref{fig:47882594521_3895effd86_o} on the other side of the mounting plate in the RF partition consists of a pair of high- and low-pass filters (Mini-Circuits ZFHP-1R2+ and SLP-150+) that together band-limit the signal to \SIrange{1.2}{140}{\mega\hertz}, and after the filters is the Mini-Circuits ZFL-500+ amplifier with a \SI{25}{\decibel} typical gain. The amplifier operates at a frequency range of \SIrange{0.05}{500}{\mega\hertz}. Figure~\ref{fig:foo} shows a comparison between the amplifier used on the two-element pathfinder and the single autonomous station. The plot shows an improved gain response; the ZFL-500+ amplifier response is flatter and is well within the experiment's operating frequency.
 
 \begin{figure}
 	\begin{center}
@@ -134,20 +128,29 @@ The Faraday cage shown in Figure~\ref{fig:46966493985_44aa8ac326_o} denoted by t
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Figures/47882594521_3895effd86_o}
-	\caption{The single autonomous station Faraday cage with the analog signal chain mounted in the RF partition on the left and the SNAP board mounted on the right.}
-	\label{fig:47882594521_3895effd86_o}
+	\begin{subfigure}[t]{0.52\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/46966493985_44aa8ac326_o} 
+		\caption{} \label{Fig:46966493985_44aa8ac326_o}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.47\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/47882594521_3895effd86_o}
+		\caption{} \label{Fig:47882594521_3895effd86_o}
+	\end{subfigure}
+	\caption{{\bf (a)} The single autonomous station Faraday cage showing one side of the mounting plate with visible power distribution circuitry, Trimble Thunderbolt E GPS-disciplined clock module, external hard drives and the RPi. {\bf (b)} The single autonomous station Faraday cage with the analog signal chain mounted in the RF partition on the left and the SNAP board mounted on the right.} \label{Fig:faraday}
 \end{figure}
 
+The Faraday cage shown in Figure~\ref{Fig:46966493985_44aa8ac326_o} denoted by the green dotted line box in Figure~\ref{Fig:albatros1_schem} is located \SI{50}{\meter} away from the antennas. The analog signal chain shown in Figure~\ref{Fig:47882594521_3895effd86_o} on the other side of the mounting plate in the RF partition consists of a pair of high- and low-pass filters (Mini-Circuits ZFHP-1R2+ and SLP-150+) that together band-limit the signal to \SIrange{1.2}{140}{\mega\hertz}, and after the filters is the Mini-Circuits ZFL-500+ amplifier with a \SI{25}{\decibel} typical gain. The amplifier operates at a frequency range of \SIrange{0.05}{500}{\mega\hertz}. Figure~\ref{Fig:foo} shows a comparison between the amplifier used on the two-element pathfinder and the single autonomous station. The plot shows an improved gain response; the ZFL-500+ amplifier response is flatter and is well within the experiment's operating frequency.
 
 In comparison to the two-element pathfinder, the cut-off frequency of the low-pass filter increased from \SIrange{81}{140}{\mega\hertz} to capture downlink signals at \SIrange{137}{138}{\mega\hertz} from the ORBCOMM satellite constellation. The ORBCOMM signals are beneficial to the final \albatros\ array because they provide a convenient means for synchronization across the antenna stations, serving as a backup to the GPS timing discussed below. Actual lab tests recommend that on time scales of \SI{\sim 30}{\second}, relative timing between various autonomous stations can be estimated to a precision of better than a couple of tenths of a nanosecond utilizing a solitary satellite. At \SI{10}{\mega\hertz} the correlation phase error is $\lesssim1^\circ$. With open-access orbits and various satellites commonly within the field of view, the ORBCOMM baseband data supposedly saved simultaneously with the astronomical data can provide offline synchronization of the ALBATROS stations. Since the ORBCOMM and science data are recorded simultaneously by the same system, enhancement to the timing calibration can be applied in post-processing.
 
-The signals are then digitized at \SI{250}{Msampl/s} by the SNAP board mounted in the Faraday cage in Figure~\ref{fig:47882594521_3895effd86_o}. A Trimble Thunderbolt E GPS-disciplined clock module creates a \SI{10}{\mega\hertz} reference that is locked from the SNAP board internal ADCs. The SNAP board FPGA processes channelized baseband data for every polarization over tunable frequency windows inside the \SIrange{0}{125}{\mega\hertz} range, with the options of 1-, 2-, 4-bit baseband channelization, and auto-and cross-spectra from the two polarizations over the full \SIrange{0}{125}{\mega\hertz} range, collected more than few-second spans. The decrease in bit profundity happens simply after the SNAP board has channelized the baseband, and the cross-channel spillage (due to, e.g., RFI and inclines in RF power as observed by the ADCs) is thusly unaffected by the low bit profundity. 
+The signals are then digitized at \SI{250}{Msampl/s} by the SNAP board mounted in the Faraday cage in Figure~\ref{Fig:47882594521_3895effd86_o}. A Trimble Thunderbolt E GPS-disciplined clock module creates a \SI{10}{\mega\hertz} reference that is locked from the SNAP board internal ADCs. The SNAP board FPGA processes channelized baseband data for every polarization over tunable frequency windows inside the \SIrange{0}{125}{\mega\hertz} range, with the options of 1-, 2-, 4-bit baseband channelization, and auto-and cross-spectra from the two polarizations over the full \SIrange{0}{125}{\mega\hertz} range, collected more than few-second spans. The decrease in bit profundity happens simply after the SNAP board has channelized the baseband, and the cross-channel spillage (due to, e.g., RFI and inclines in RF power as observed by the ADCs) is thusly unaffected by the low bit profundity. 
 
 An RPi 3B+ controls the SNAP board and gets the auto-and cross-spectra through GPIO pin connections, and the spectra are saved to an onboard SD card. The baseband data is passed through an ethernet from the SNAP board to the RPi and saved to external hard drives. The presentation of gigabit ethernet with the RPi 3B+ model has empowered the high data throughput related to writing baseband. As a benchmark, 1-bit baseband recording of two polarizations more than \SI{10}{\mega\hertz} of transmission capacity yields an inexact data rate of 5~MB/s or 400~GB/day.
 
 \subsection{Correlation}
-
 
 \subsection{Solar Power Supply System}
 
@@ -155,33 +158,34 @@ The future autonomous stations shown in Figure~\ref{Fig:marion_map} are farther 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Figures/40916139043_f3d0c6b013_o}
-	\caption{}
-	\label{fig:40916139043_f3d0c6b013_o}
+	\begin{subfigure}[t]{0.52\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/40916139043_f3d0c6b013_o} 
+		\caption{} \label{Fig:40916139043_f3d0c6b013_o}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.46\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/bin}
+		\caption{} \label{Fig:bin}
+	\end{subfigure}
+	\caption{{\bf (a)} The three supporting structures for the nine solar panels mounted on a rigid metalized plastic panels. Behind the supporting structures is the plastic enclosure housing the readout electronics, two batteries, and the power control electronics. {\bf (b)} Interior of the  plastic enclosure housing the readout electronics, two batteries, GPS antenna, and the power control electronics} \label{Fig:power}
 \end{figure}
 
-The supporting structures for the nine solar panels were specifically designed to manage the gale-force winds on Marion Island, though it was challenging to install them as the volcanic ground minimizes the appropriate anchoring ability. The three aluminum mounting structures each carry three solar panels mounted on a rigid metalized plastic panel. The structures are oriented due north and are designed to incline the solar panels at a relatively steep angle to perform efficiently under winter conditions. The three supporting structures with mounted solar panels are shown in Figure~\ref{fig:40916139043_f3d0c6b013_o}. Behind the supporting structures is the plastic enclosure housing the readout electronics, two batteries, and the power control electronics shown in Figure~\ref{fig:bin}.
+The supporting structures for the nine solar panels were specifically designed to manage the gale-force winds on Marion Island, though it was challenging to install them as the volcanic ground minimizes the appropriate anchoring ability. The three aluminum mounting structures each carry three solar panels mounted on a rigid metalized plastic panel. The structures are oriented due north and are designed to incline the solar panels at a relatively steep angle to perform efficiently under winter conditions. The three supporting structures with mounted solar panels are shown in Figure~\ref{Fig:40916139043_f3d0c6b013_o}. Behind the supporting structures is the plastic enclosure housing the readout electronics, two batteries, and the power control electronics shown in Figure~\ref{Fig:bin}.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{Figures/bin}
-	\caption{}
-	\label{fig:bin}
-\end{figure}
-
-
-Each of the three solar panel sets is connected in series and parallel to the Victron BlueSolar MPPT 50|35 charge controller, optimizing power transfer from the solar array when charging is required, and monitors charge level reducing output current when the battery bank is fully charged. An Arduino logs the data from the Victron charge controller to an SD card and switches power on and off to the readout electronics box. The on/off feature is compulsory to avert battery system damage from excessively deep discharge. The system also has a battery power conservation feature, which schedules observations for distinct periods, often during the night when ionospheric conditions are more favorable. The power logging and control system, the Victron charge controller, and an EMI filter are housed together in an aluminum box shown in Figure~\ref{fig:power_box_interior}. The solar charge controller generates RF noise, which would likely cause interferences; hence, an EMI filter was designed to minimize conducted emissions on the solar charge controller's photovoltaic side. Figure~\ref{fig:station} shows the complete installation of the first autonomous station.
+Each of the three solar panel sets is connected in series and parallel to the Victron BlueSolar MPPT 50|35 charge controller, optimizing power transfer from the solar array when charging is required, and monitors charge level reducing output current when the battery bank is fully charged. An Arduino logs the data from the Victron charge controller to an SD card and switches power on and off to the readout electronics box. The on/off feature is compulsory to avert battery system damage from excessively deep discharge. The system also has a battery power conservation feature, which schedules observations for distinct periods, often during the night when ionospheric conditions are more favorable. The power logging and control system, the Victron charge controller, and an EMI filter are housed together in an aluminum box shown in Figure~\ref{Fig:power_box_interior}. The solar charge controller generates RF noise, which would likely cause interferences; hence, an EMI filter was designed to minimize conducted emissions on the solar charge controller's photovoltaic side. Figure~\ref{Fig:station} shows the complete installation of the first autonomous station.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Figures/power_box_interior}
-	\caption{}
-	\label{fig:power_box_interior}
+	\caption{The power logging and control system, the Victron charge controller, and an EMI filter are housed in an aluminum box.}
+	\label{Fig:power_box_interior}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Figures/station}
-	\caption{}
-	\label{fig:station}
+	\caption{April 2019 deployment of the first \albatros\ autonomous station was a success. The mounted solar panels and the LWA antenna are visible.}
+	\label{Fig:station}
 \end{figure}
