@@ -1,7 +1,18 @@
 \chapter{\albatros~Experiment}
+
+\attention{This chapter should start off with a description of
+  ALBATROS as a whole, i.e.\ the overall scientific goals, design
+  drivers, and final vision for the experiment.  After you've written
+  this introduction, then you can launch into the details of how we're
+  building up this project one step at a time, starting with the
+  pathfinder.  (Right now, the way you launch straight into the
+  pathfinder description will be confusing for outside readers.)  Some
+  of this intro text exists in section 4.3 already, so you can
+  transplant it up front.}
+
 \section{Overview of the Pathfinder}
 
-\albatros~\citep[\albatros;][]{2020arXiv200812208C} pathfinder shown in Figure~\ref{Fig:albatros2} was introduced as an explorer in April 2018 at the \prizm\ site. Installing a pathfinder was a convenient way to assess Marion Island from discovering what is observable in the sky and finding out the observable frequencies. Figure~\ref{Fig:albatros2_schem} shows the block diagram of the pathfinder, and the signal chain description is below. The final experiment (\albatros) is aimed at consisting of autonomous antenna stations operating at a frequency range of \SIrange{1.2}{125}{\mega\hertz} that will map the low-frequency sky. Since these experiments are exploratory, they are taking steps towards achieving the future objective of coordinating observations to image the sky at frequencies that have been unexplored since the 1970s. These observations may allow us to probe even earlier epochs of the universe's history and will lay the groundwork for eventually exploring the cosmic "dark ages."
+\albatros~\citep[\albatros;][]{2020arXiv200812208C} \attention{[you've cited the instrument paper elsewhere already, so no need to repeat it here]} pathfinder shown in Figure~\ref{Fig:albatros2} was introduced as an explorer in April 2018 at the \prizm\ site \attention{[be more descriptive in giving the location, e.g.\ xxx meters in yyy direction from the PRIZM antennas, so that the experiments could share infrastructure at Junior's]}. \st{Installing a} \attention{The main goal of the} pathfinder was \st{a convenient way} to assess \st{Marion Island from discovering what is observable in the sky and finding out} the observable frequencies \attention{from Marion below 30~MHz}. \attention{[Add a sentence giving a high-level description of the pathfinder as a two-element interferometer using direct correlation, off-the-shelf LWA antennas, etc.  This text should supplement the figures that you're including.]} Figure~\ref{Fig:albatros2_schem} shows the block diagram of the pathfinder, and the signal chain description is below. The final experiment (\albatros) is aimed at consisting of autonomous antenna stations operating at a frequency range of \SIrange{1.2}{125}{\mega\hertz} that will map the low-frequency sky. Since these experiments are exploratory, they are taking steps towards achieving the future objective of coordinating observations to image the sky at frequencies that have been unexplored since the 1970s. These observations may allow us to probe even earlier epochs of the universe's history and will lay the groundwork for eventually exploring the cosmic "dark ages."  \attention{[The last few sentences are examples of text that should be moved earlier into the intro.]}
 
 \begin{figure}
 	\centering
@@ -15,14 +26,20 @@
 \begin{figure}
 	\begin{center} \includegraphics[width=\linewidth]{Figures/pathfinder_schematic.pdf}
 		\caption{Two-element \albatros\ pathfinder block diagram.  Signals from two dual-polarzation LWA antennas are amplified by
-			front-end active baluns~\citep{2012PASP..124.1090H}. The antennas are connected via 100-m coaxial cables to the back-end readout electronics, which are housed in a Faraday cage denoted by the green dashed box.  Each of the four antenna outputs is passed to a second-stage electronics chain consisting of filters and	further amplfication.  The signals are digitized at 250~Msamp/s by a SNAP board, which includes an on-board FPGA that computes auto- and cross-spectra from and between the four inputs.  A Raspberry Pi controls the SNAP board and saves the data.}
+			front-end active baluns~\citep{2012PASP..124.1090H}. The antennas are connected via 100-m coaxial cables to the back-end readout electronics, which are housed in a Faraday cage denoted by the green dashed box.  Each of the four antenna outputs is passed to a second-stage electronics chain consisting of filters and	further amplfication.  The signals are digitized at 250~Msamp/s by a SNAP board, which includes an on-board FPGA that computes auto- and cross-spectra from and between the four inputs.  A Raspberry Pi controls the SNAP board and saves the data. \attention{[It'll be best if you rewrite the caption slightly in your own words, rather than copying the text from the instrument paper.  I personally don't mind because you are, after all, a coauthor, but I'm worried about Turnitin flagging this.]}}
 		\label{Fig:albatros2_schem}
 	\end{center}
 \end{figure}
 
+\attention{As a general comment, you can (and should) include more
+  detail in this section than what's given in the instrument
+  paper---think of this as an ``insider's guide'' for the next
+  incoming student.  You've done this already in some places, but I'll
+  include some additional suggestions in the text below.}
+
 \subsection{Antenna}\label{s:antenna}
 
-The pathfinder uses two Long Wavelength Array (LWA) antennas configured as a two-element interferometric array. The two dual-polarization antennas are separated by $\sim$\SI{110}{\meter} on an east-west baseline. The dipole like antennas is of high preference for this project because they are relatively simple, and they are omnidirectionally patterned. The antennas possess low gain; therefore, the Galactic noise is limited by a fraction of 10, and the unwanted harmonics and intermodulation products are prevented~\citep{Memo28, Memo27}. The entire antenna and supporting structure sits on top of a ground screen that is roughly \SI{3}{\meter} on a side and is made of welded wire mesh.
+The pathfinder uses two Long Wavelength Array (LWA) antennas configured as a two-element interferometric array. The two dual-polarization antennas are separated by $\sim$\SI{110}{\meter} on an east-west baseline. The dipole like antennas is of high preference for this project because they are relatively simple, and they are omnidirectionally patterned \attention{[the other important factor is that the LWA antennas have a long development history and therefore are a natural off-the-shelf choice for initial measurements]}. The antennas possess low gain; therefore, the Galactic noise is limited by a fraction of 10, and the unwanted harmonics and intermodulation products are prevented~\citep{Memo28, Memo27} \attention{[I don't understand the latter part of this sentence...?  Re: gain, you should include some of the FEKO simulation results from Tristan]}. The entire antenna and supporting structure sits on top of a ground screen that is roughly \SI{3}{\meter} on a side and is made of welded wire mesh \attention{[this is an example of where you can include more detail: explain to the future student what the purpose of the ground screen is, recommended size from LWA, etc]}.
 
 \subsection{Front-end Electronics}\label{s:fee}
 
@@ -41,7 +58,7 @@ All the front end electronic (FEE) components are incorporated into a double-sid
 		\includegraphics[width=\linewidth]{Figures/Balun_Block.png}
 		\caption{} \label{Fig:Balun Schematic}
 	\end{subfigure}
-	\caption{{\bf (a)} Unenclosed FEE mounted on the pathfinder antenna supporting structure with the electronic components visible on the top part of the PCB. {\bf (b)} One Polarisation Block Diagram of the FEE \cite{2012PASP..124.1090H}} \label{Fig:fee}
+	\caption{{\bf (a)} Unenclosed FEE mounted on the pathfinder antenna supporting structure with the electronic components visible on the top part of the PCB. {\bf (b)} One polarisation block diagram of the FEE~\citep{2012PASP..124.1090H}} \label{Fig:fee}
 \end{figure}
 
 \subsection{Back-end Electronics}
