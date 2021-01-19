@@ -1,11 +1,198 @@
 \chapter{\prizm~Instrumentation}
-    \section{\prizm~Experiment Overview}
-    \section{Signal Chain}
-        \subsection{}
-        \subsection{}
-        \subsection{}
-    \section{Revised \prizm~Instrumentation}
-        \subsection{}
-          
-        \subsection{}
-	
+\section{\prizm~Experiment Overview}
+
+\prizm~\citep[\prizm;][]{2019JAI.....850004P} shown in Figure~\ref{Fig:prizm} is an experiment that is specifically designed to study cosmic dawn in the universe using \SIrange{30}{200}{\mega \hertz} of the global redshifted 21 cm signal from neutral hydrogen. The experiment consists of two compact, modified four-square antennas that operate at central observing frequencies of \SIrange{70}{100}{\mega \hertz}. The combined frequency range of both antennas spans \SIrange{30}{200}{\mega \hertz}, which brackets the predicted absorption feature from cosmic dawn. Figure~\ref{Fig:PRZIM_block} shows the subsystems of \prizm\, which will be discussed briefly, followed by a discussion on revised subsystems.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Figures/prizm.pdf}
+	\caption{The \prizm\ experiment built on Marion Island. The two antennas (\SI{70}{\mega \hertz} and \SI{100}{\mega \hertz}) are visible and the the three shipping containers enclose the second stage electronics Faraday cage, generator, batteries, fuel, and spares. The main base lies four kilometers away from the observing site.}
+	\label{Fig:prizm}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Figures/PRZIM_block}
+	\caption{Block diagram for a single \prizm\ antenna polarization. The upper and lower dashed boxes reflect the electronics chain's first and second stages. To decrease contamination from self-generated RFI, the 
+		two stages are separated by \SI{50}{\meter}.}
+	\label{Fig:PRZIM_block}
+\end{figure}
+
+\section{Signal Chain}
+
+\subsection{Antenna}
+
+Figure~\ref{Fig:PRZIM_block} shows the single polarization of the  \prizm\ antenna. The first incarnation of the antennas, known as Sonda Cosmologica de las Islas para la deteccion de HIdrogeno neutro (SCI-HI), was deployed in Guadalupe Island (\SI{200}{\kilo \meter} off the coast of Mexico) in 2013. Figure~\ref{Fig:petals} shows the antenna that is made up of four petals that form a pair of crossed dipoles.
+
+Each petal has three trapezoidal facets angled at various angles with respect to the ground to reduce the radiation pattern variations with frequency. The antenna radiation pattern's width has a direct dependence on the angles of the trapezoidal facets, and the height of the antenna above the ground changes the beam symmetry~\citep{2014ApJ...782L...9V}.  The \prizm\ antenna structure was redesigned using fiberglass from PVC pipe structure to survive the Marion Island roaring forties as shown in Figure~\ref{Fig:structure}.  
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/petals.pdf}
+	\caption{CAD picture of the \prizm\ antenna. Four-square antenna configuration which consists of two north-south and east-west aligned crossed dipoles.}
+	\label{Fig:petals}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/structure}
+	\caption{(a) A 1/10 scale model of the support structure of the \SI{100}{\mega \hertz} \prizm\ antenna made of paper and plastic straws; (b) CAD modeling; and (c) a completed \SI{100}{\mega \hertz} antenna mounted on a \SI{2x2}{\meter} fibreglass grating.}
+	\label{Fig:structure}
+\end{figure}
+
+\subsection{First Stage Electronics}
+
+The first stage electronics is housed in the column supporting the antenna petals as shown in Figure~\ref{Fig:column} and the block diagram of the first stage electronics is shown in Figure~\ref{Fig:prizm_fee_block}. The signal from the single polarisation \prizm\ dipole is fed to the electromechanical switch labeled as "calibrator switch" by a coaxial cable which is \SI{200}{\milli \meter} long. In order to dissipate the current on the outer conductor of the coaxial cable, a ferrite core is used. The calibrator switch is required to switch between observations of the sky and the calibrator sources of \SI{50}{\ohm}, \SI{100}{\ohm}, short terminators, and a broadband noise source.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/column}
+	\caption{The electronics box for the first stage, green inset represents what is currently installed in the central column under the antenna.}
+	\label{Fig:column}
+\end{figure}
+
+Antenna and calibrator sources are connected at the calibrator switch's input ports, and the WEA101 LNAs are used to amplify its output. Additional electronics in the first stage electronics box include voltage regulation circuitry for LNAs and temperature sensors. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Figures/prizm_fee_block}
+	\caption{A simplified schematic of electronics from the first stage. Components marked with a star are connected to one wire digital temperature sensor to record the temperature difference across them.}
+	\label{Fig:prizm_fee_block}
+\end{figure}  
+
+\subsection{Second Stage Electronics (SSE)}
+
+A custom-designed Faraday cage (\SI{\sim 300x470x240}{\milli \meter} (Figure~\ref{Fig:47093285614_63bb00be20_o})) that encloses the SSE is housed in one of the shipping containers shown in Figure~\ref{Fig:prizm}. The signal from the first stage electronics is fed via a \SI{\sim 50}{\meter} LMR400 coaxial cable, which is a reasonable distance to minimize the contamination of possible self-generated RFI. The coaxial cables are mouse proofed using a few meters of stainless steel wire mesh cloth. The multi-tiered interior of the Faraday cage is shown in Figure~\ref{Fig:enclosure_ann} with the top panel removed.
+
+The main power to the SSE box is fed through a BNC connector. The SSE box houses the two DC-DC converters on the bottom layer, two SNAP boards powered from one DC-DC converter, and the other DC-DC converter powers the rest of the box's electronics. The filtering and amplification stage consists of the Minicircuits SLP-200+ and SHP-25+ low and high pass filters. The filtered signal is amplified by \SI{20}{\decibel} using a Minicircuits ZX60-33LN-S+ amplifier. The output signal is then fed to the readout electronics.
+
+Each SNAP board receives the two RF signals from the two polarizations of a single antenna and samples the signals at a rate of \SI{500}{\mega samp\per \second} using a dual, monolithic, eight-bit, AT84AD001B external analog-to-digital converter (ADC) that is connected to the SNAP board via a Z-Dok connector. A Valon 5009 frequency synthesizer provides the ADC with a clock signal. A frequency range between \SIrange{0}{250}{\mega \hertz} containing 4096 channels is created by the SNAP board, which also includes the onboard Xilinx Kintex 7 FPGA that computes auto and cross spectra from and between the four inputs. An RPi controls the SNAP board and saves data to an onboard SD-card. The RPi's timing is provided by the Adafruit Ultimate GPS module, connected to an external GPS antenna.
+
+The SSE box also encloses the additional hardware that controls the calibrator switch states and voltage regulation. The L298 full-bridge drivers were used to make the control circuit, and the transistor-transistor-logic (TTL) is used to generate the control signals. A Rpi controls the logic gates of the integrated chips. The whole first stage electronics is temperature monitored using the 1-wire DS18B20 temperature sensor. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Figures/enclosure_ann}
+	\caption{The multi-tiered interior shown while the SSE box top panel is removed. Most of the internal components in this configuration can be accessed, but one more panel needs to be opened to access the DC-DC converters.}
+	\label{Fig:enclosure_ann}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\linewidth]{Figures/47093285614_63bb00be20_o}
+	\caption{The SSE Faraday cage made with separate brackets and flat sheets.}
+	\label{Fig:47093285614_63bb00be20_o}
+\end{figure}       
+
+\subsection{Power}
+
+The \prizm\ system is powered using eight \SI{12}{\volt} \SI{200}{\ampere \hour} battery bank wired in parallel as shown in Figure~\ref{Fig:power}. The total system draws \SI{\sim 65}{\watt}.
+Moreover, when the batteries are fully charged, the system can operate for $sim$ one week. Battery charging is performed manually using a Honda EU30is generator, and a fuel cache kept at the observing site. The batteries are connected to two DC/DC converters during observations. The DC-DC converters are enclosed in the SSE box and provides stable voltage outputs despite the slow decline of the battery voltage. Further regulation is performed to supply power to several components in the system.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Figures/power}
+	\caption{\prizm's power distribution chain consists of eight \SI{12}{\volt} \SI{200}{\ampere \hour} lead crystal batteries each. The batteries work in pairs that, through the green switches, are cascaded together. The battery pairs are disconnected during charging, and a single battery charger will charge two batteries. To power the battery chargers, yellow switches are used. All yellow switches are turned OFF during the observation, and all green switches are powered ON.}
+	\label{Fig:power}
+\end{figure}
+
+\section{Revised \prizm~Instrumentation}
+
+Revisions were done to some of the \prizm\ subsystems as part of maintenance and functionality improvement. The proposed first stage electronics enclosure design will be discussed in the next subsections, together with the revised SSE enclosure. The rest of the electronic parts and subsystems are going to remain the same. Due to COVID-19 restrictions, the proposed first stage electronics and their enclosure were not assembled, tested, and implemented, nor the SSE enclosure. 
+
+\subsection{First Stage Electronics (FSE)}
+
+After assessing the current FSE and its functionality, a new FSE and its enclosure were proposed for an upcoming deployment. Figure~\ref{Fig:FSE_rev} shows the block diagram of the proposed FSE architecture. To ensure that the enclosure was going to hold all the FSE, dummy placeholder components were crafted and placed in the enclosures. Figure~\ref{Fig:FSE_archi} shows a nominal component layout with dummy placeholders. Enclosures are two off-the-shelf boxes that are attached back to back for the two polarizations. Most of the housekeeping electronics are on the side of Figure~\ref{Fig:FSE_archi}, which is intended to be accessed from the east-facing column door, giving the human slight shelter from the wind. The only housekeeping breakout on the second enclosure is half of the one-wire thermometry bus.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/FSE_rev}
+	\caption{The block diagram of the proposed FSE achirtecture showing the 6-position switch connections, the breakouts for housekeeping, SPDT for controling the SP6T and amplification.}
+	\label{Fig:FSE_rev}
+\end{figure} 
+
+The box currently accommodates only one SPDT switch per side instead of two. The SPDT switch helps us to look through the antenna without any cables being physically disconnected. A right-angle adapter will be required on the SPDT to interface with the Y-cable. To look into the 6-position switch, a VNA will be plugged directly into an open port for the time being. The terminal blocks have 16 positions total, so one is unused by the DB-15 breakout. The SP6T switch can block the unused position. The filters in Figure~\ref{Fig:FSE_archi} are placeholders, but they are about the same size as the WEA-101 LNAs highlighted in yellow in Figure~\ref{Fig:FSE_rev}. In Figure~\ref{Fig:FSE_archi}, the incoming DB-15 connector is split out into two terminal blocks, and Table~\ref{Tab:Pinout} shows the connection configuration. The wall-mounted PCB has a 12V input and provides the LNAs with a 5V output and the one-wire thermometers with a 3.3V onboard output. To service both polarizations, all one-wire thermometers are connected to the three-row header, which is split into two parts.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{Figures/FSE_archi}
+	\caption{General layout of the components in the proposed FSE enclosure with dummy placeholders.}
+	\label{Fig:FSE_archi}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/Terminal}
+	\caption{Housekeeping breakout. DB-15 pin assignments are annotated on the terminal blocks.}
+	\label{Fig:Terminal}
+\end{figure}
+
+\begin{table}
+	\centering
+	\begin{tabular}{ c|c|c|c} 
+		\hline
+		DB-15 & Terminal Block & Colour & Function \\
+		\hline
+		\hline
+		1 & L1 & Orange & S1-1 \\ 
+		2 & L2 & Yellow & S1-2 \\ 
+		3 & L3 & Green & S1-3 \\
+		4 & L4 & Blue & S1-4 \\
+		5 & L5 & Purple & S1-5 \\
+		6 & L6 & Brown & S1-6 \\
+		7 & L7 & White & S1-Reset \\
+		8 & L8 & Black & Ground \\
+		9 & R2 & Gray & S2-Ant \\
+		10 & R3 & Brown & S2-Cal \\
+		11 & R4 & Orange & Noise \\
+		12 & R5 & White & Blank \\
+		13 & R6 & Blue & Temp Sensor \\
+		14 & R7 & Black & Ground \\
+		15 & R8 & Red & 12 V \\
+		\hline
+	\end{tabular}
+	\caption{Housekeeping pinout. Terminal block notation and numbering L and R denote left and right as viewed when the box is vertical, and numbers are from top to bottom. S1 denotes SP6T switch, S2 denotes SPDT switch.}
+	\label{Tab:Pinout}
+\end{table}
+
+
+\subsection{Second Stage Electronics}
+
+A revised Faraday cage (\SI{\sim 400x280x110}{\milli \meter}) for the SSE was designed using Autodesk Inventor Professional 2018, and the sheet metal box is shown in Figure~\ref{Fig:Enclosed}. The enclosure was revised so that each antenna has its SSE box.  There was no longer shared housekeeping RPi that binds the SNAP boards together. That was the main driver for separating the SNAP boards/ enclosures.  
+
+The main improvements to the new enclosure are listed below.
+
+\begin{itemize}
+	\item Increased and improved accessibility of all components,
+	\item The design is folded laser cut sheet metal, unlike the separate brackets and flat sheets that makes up the current design
+	\item Easier and cheaper to assemble and manufacture
+	\item User-friendly (the holes are already in place to tap and screw the components in place)
+	\item It was designed to fit into a hiking backpack for easy carrying when hiking to the \prizm\ site.
+	\item The new enclosure has a partitioned portion to accommodate the RF signal and ensure that self-generated RFI does not contaminate the RF signal, as shown in Figure~\ref{Fig:farap}.
+	\item A SNAP board cooling fan was also added for stable functionality of the SNAP board.
+	\item The switch control circuit was revised, and it is a stackable layout so that it sits on top of the RPi and connects directly to the GPIO pins.    	
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[t]{0.52\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{"Figures/Top Open"} 
+		\caption{} \label{Fig:Top Open}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.46\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{"Figures/Bottom Open"}
+		\caption{} \label{Fig:Bottom Open}
+	\end{subfigure}
+	\caption{{\bf (a)} CAD of an enclosure with the top lid open. The partioned portion is to avoid self-generated contamination from components with switching mechanisms. Some placeholders were mounted on the sheet metal design on Autodesk Inventor. {\bf (b)} The bottom view without the lid, showing the SNAP board and its cooling fan, and the RPi. } \label{Fig:farap}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/Enclosed}
+	\caption{An enclosed box showing the connector placeholders and measured cutouts for other connectors that are not mounted.}
+	\label{Fig:Enclosed}
+\end{figure}
