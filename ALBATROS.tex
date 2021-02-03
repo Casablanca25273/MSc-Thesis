@@ -1,6 +1,6 @@
 \chapter{\albatros~Experiment}
 
-\albatros\ will be an interferometric array consisting of ten autonomous antenna stations operating at a frequency range of \SIrange{1.2}{125}{\mega\hertz} that will map the low-frequency sky and will be separated by maximum baseline lengths of \SI{\sim {20}}{km}. This experiment is exploratory and will taking steps towards achieving the future objective of imaging the sky at frequencies that have been unexplored since the 1970s. These observations may allow us to probe even earlier epochs of the universe's history and will lay the groundwork for eventually exploring the cosmic ``dark ages.''
+\albatros\ will be an interferometric array consisting of ten autonomous antenna stations operating at a frequency range of \SIrange{1.2}{125}{\mega\hertz} that will map the low-frequency sky and will be separated by maximum baseline lengths of \SI{\sim {20}}{km}. This experiment is exploratory and will be taking steps towards achieving the future objective of imaging the sky at frequencies that have been unexplored since the 1970s. These observations may allow us to probe even earlier epochs of the universe's history and will lay the groundwork for eventually exploring the cosmic ``dark ages.''
 
 In April 2019, I was part of the deployment team in Marion Island, and I am going to discuss in detail the tasks associated with \albatros\ that we managed to complete during the three-week relief voyage.  
 
@@ -19,19 +19,19 @@ The \albatros\ pathfinder shown in Figure~\ref{Fig:albatros2} was introduced as 
 
 \begin{figure}
 	\begin{center} \includegraphics[width=\linewidth]{Figures/pathfinder_schematic.pdf}
-		\caption{The pathfinder's two-element \albatros\ block diagram.  The signals from two dual-polarization LWA antennas~\citep{2012PASP..124.1090H} are amplified by front-end active baluns. The 100-m coaxial cables connect the SSE housed in a Faraday cage denoted by a green dashed box, with the antennas. A second-stage electronics chain is moved to each of the four antenna outputs. It consisting of filters and further amplification. A SNAP module comprises an on-board FPGA that calculates auto- and cross-spectra at 250~Msamp/s from and between the four inputs and digitizes the signals. A Raspberry Pi controls the SNAP board, and the data is saved.}
+		\caption{The pathfinder's two-element \albatros\ block diagram.  The signals from two dual-polarization LWA antennas~\citep{2012PASP..124.1090H} are amplified by front-end active baluns. The 100-m coaxial cables connect the SSE housed in a Faraday cage denoted by a green dashed box, with the antennas. A second-stage electronics chain is moved to each of the four antenna outputs. It consisting of filters and further amplification. A SNAP module comprises an on-board FPGA that calculates auto- and cross-spectra at 250~Msamp/s from and between the four inputs and digitizes the signals. A SNAP board is controlled by the Raspberry Pi, and the data is saved.}
 		\label{Fig:albatros2_schem}
 	\end{center}
 \end{figure}
 
 \subsection{Antenna}\label{s:antenna}
 
-The pathfinder uses two Long Wavelength Array (LWA) antennas configured as a two-element interferometric array. The two dual-polarization antennas are separated by $\sim$\SI{110}{\meter} on an east-west baseline. The LWA antennas were selected for this project because they are relatively simple, and they are omnidirectionally patterned. The other important factor is that the LWA antennas have a long development history and therefore are a natural off-the-shelf choice for initial measurements. The antennas possess low gain; therefore, the Galactic noise is limited by a fraction of 10~\citep{Memo28, Memo27} \attention{[I'm not sure what you mean by ``fraction of 10'' here.  If you meant a factor of 10, what is the relevant frequency range?]}. Figure~\ref{Fig:LWA_mesh_gain} shows the gain in the zenith direction as a function of frequency. It also gives the realized gain (same direction), showing how the antenna is quite lossy at the lowest frequencies. The dB scale emphasizes how low gain/low efficiency the antenna is outside of its nominal operating range. The entire antenna and supporting structure sits on top of a ground screen that is roughly \SI{3}{\meter} on a side and is made of welded wire mesh. To prevent loss by absorption into the ground and also to stabilize the system temperature by isolating the antenna from a variable (e.g., dry versus wet) ground conditions, a conducting \SI{3}{\meter} on a side ground screen is necessary~\citep{Memo157}.
+The pathfinder uses two Long Wavelength Array (LWA) antennas configured as a two-element interferometric array. The two dual-polarization antennas are separated by $\sim$\SI{110}{\meter} on an east-west baseline. The LWA antennas were selected for this project because they are relatively simple and are omnidirectionally patterned. The other important factor is that the LWA antennas have a long development history and therefore are a natural off-the-shelf choice for initial measurements. The antennas possess low gain; therefore, the Galactic noise is limited by a factor of 10 at a frequency range of \SIrange{30}{90}{\mega \hertz}~\citep{Memo28, Memo27}. Figure~\ref{Fig:LWA_mesh_gain} shows the gain in the zenith direction as a function of frequency. It also gives the realized gain (same direction), showing how the antenna is quite lossy at the lowest frequencies. Realized gain also takes into account the losses on the antenna. Due to the antenna being electrically short at the lowest frequencies, impedance mismatch losses are high. As a result, the realized gain curve is \SI{50}{\decibel} lower. The dB scale emphasizes how low gain/low efficiency the antenna is outside of its nominal operating range. The entire antenna and supporting structure sits on top of a ground screen that is roughly \SI{3}{\meter} on a side and is made of welded wire mesh. To prevent loss by absorption into the ground and also to stabilize the system temperature by isolating the antenna from a variable (e.g., dry versus wet) ground conditions, a conducting \SI{3}{\meter} on a side ground screen is necessary~\citep{Memo157}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{Figures/LWA_mesh_gain}
-	\caption{FEKO simulation for the antenna gain. The plot shows the gain in the zenith direction (which is always the peak gain) as a function of frequency it also gives the realized gain (same direction), showing how the antenna is quite lossy. Image credit: Tristan M\'ernard \attention{[What is the ``realized gain'' in this case?  To the best of my knowledge, we haven't obtained this quantity from data...in any case, that point should be clarified.]}}
+	\caption{FEKO simulation for the antenna gain. The plot shows the gain in the zenith direction (which is always the peak gain) as a function of frequency; it also gives the realized gain (same direction), showing how the antenna is quite lossy. Due to the antenna being electrically short at the lowest frequencies, impedance mismatch losses are high. As a result, the realized gain curve is \SI{50}{\decibel} lower. Image credit: Tristan M\'ernard}
 	\label{Fig:LWA_mesh_gain}
 \end{figure}
 
@@ -110,23 +110,23 @@ The two-element pathfinder system is powered using four \SI{12}{\volt}, \SI{200}
 	\label{table:budget}
 \end{table}
 
-\section{Overview of Autonomous Stations}
+\section{Overview of Autonomous Stations}\label{s:autonomous}
 
-The final ALBATROS array will consist of ten autonomous antenna stations separated by maximum baseline lengths of \SI{\sim 20}{\kilo \meter} as shown in \autoref{Fig:marion_map}. There are eight remaining planned installation sites. The Hydro shack and the \prizm\ site already have infrastructure installed, and Katedraal will remain unused. The ten installation sites (existing and planned) for the ALBATROS array have a ring-like pattern that is appropriate for imaging and produces an FWHM synthesized beam of $7'$ at \SI{5}{\mega\hertz} as shown in Figure~\ref{Fig:marion_map_beam}. The array beam promises an improved \attention{[be quantitative: how much improvement? -- I am not sure of the numbers here/ how to get them; please help. :-)  You've got the answer in chapter 1 ;-)  RAE-B mapped at 5~MHz and 10 deg resolution, so ALBTROS will be $>10$ times better.]} resolution over existing measurements to date. Thus far, the ALBATROS main goal will be to map Galactic foregrounds at high resolution at low frequencies, which is crucial before doing cosmological observations of the dark ages. 
+The final ALBATROS array will consist of ten autonomous antenna stations separated by maximum baseline lengths of \SI{\sim 20}{\kilo \meter} as shown in \autoref{Fig:marion_map}. There are eight remaining planned installation sites. The Hydro shack and the \prizm\ site already have infrastructure installed, and Katedraal will remain unused. The ten installation sites (existing and planned) for the ALBATROS array have a ring-like pattern that is appropriate for imaging and produces an FWHM synthesized beam of $7'$ at \SI{5}{\mega\hertz} as shown in Figure~\ref{Fig:marion_map_beam}. The array beam promises an improved ($>10$ times better) resolution over existing measurements to date. Thus far, the ALBATROS main goal will be to map Galactic foregrounds at high resolution at low frequencies, which is crucial before doing cosmological observations of the dark ages. 
 
 In April 2019, I was part of the deployment team in Marion Island, and I am going to discuss in detail the tasks associated with \albatros\ that we managed to complete during the three-week relief voyage.  
 
 \begin{figure}
 	\centering
-	\begin{subfigure}[t]{0.6\textwidth}
+	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{Figures/marion_map_annotated.jpg} 
 		\caption{} \label{Fig:marion_map}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[t]{0.39\textwidth}
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{Figures/marion_beam_huts_2020.jpg}
+		\includegraphics[width=\linewidth]{Figures/marion_beam_huts_2020}
 		\caption{} \label{Fig:marion_beam}
 	\end{subfigure}
 	\caption{{\bf (a)} Map of Marion Island.  At present, the \albatros\ pathfinder antennas are located at the \prizm\ site and the hydro shack (gray markers). The black markers indicate the eight shore huts that will be used for potential installations of the \albatros\ antenna.  The white markers show the other infrastructure points available that will not be used for antennas. {\bf (b)} Synthesized beam at 5~MHz at zenith from the full \albatros\ array, using the existing and planned
@@ -138,18 +138,35 @@ In April 2019, I was part of the deployment team in Marion Island, and I am goin
 
 The S. A. Agulhas II sails from Cape Town each year in April. The relief voyage preparations begin months before the ship sails; the team plans and makes decisions based on the next voyage's goals. One of the primary goals of the 2019 voyage was to install the prototype autonomous station.   The goal was to conduct an end-to-end system test under Marion's environmental conditions. The solar power budget, mechanical/electrical survival in wind and rain, and mouse proofing was the most critical considerations that were evaluated. The development and testing of improved designs and systems occur at the University of KwaZulu Natal radio astronomy lab. 
 
-In preparation for the 2019 voyage, I designed and developed a prototype solar power supply system that paved the way for the solar power supply system installed in Marion Island as part of the autonomous stations. Figure~\ref{Fig:rooftop1} \attention{[general comment: as one of your last editing steps, check the figure numbering in all chapters and make sure that the figures appear in order -- it looks like this particular figure needs to be moved up in the text, same with the next figure reference]} shows the solar panel used and the bin that enclosed the control electronics for the solar power system. Figure~\ref{Fig:rooftop2} shows the solar charge controller (Victron BlueSolar MPPT 75$\vert$15), \SI{12}{\volt} \SI{150}{\ampere \hour} battery, an Arduino that was used for logging the data from the Victron charge controller to an SD card mounted in the RPi. 
+In preparation for the 2019 voyage, I designed and developed a prototype solar power supply system that paved the way for the solar power supply system installed in Marion Island as part of the autonomous stations. Figure~\ref{Fig:rooftop1} shows the solar panel used and the bin that enclosed the control electronics for the solar power system. Figure~\ref{Fig:rooftop2} shows the solar charge controller (Victron BlueSolar MPPT 75$\vert$15), \SI{12}{\volt} \SI{150}{\ampere \hour} battery, an Arduino that was used for logging the data from the solar charge controller to an SD card mounted in the RPi. 
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[t]{0.56\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/rooftop1} 
+		\caption{} \label{Fig:rooftop1}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/rooftop2}
+		\caption{} \label{Fig:rooftop2}
+	\end{subfigure}
+	\caption{{\bf (a)} A prototype solar power supply setup. The prototype of the proposed system was tested on the roof of H Block at the UKZN. The solar panel which was used was the Enersol 300 and the control electronics are enclosed in the weather proof plastic bin. {\bf (b)} Interior of the enclosure. Inside the enclosure was the solar regulator which was monitored via a communication port, a single\SI{12}{\volt} \SI{150}{\ampere \hour} battery, an Arduino board which was programmed for serial to Universal Serial Bus (USB) communication, the Rpi which was connected to the sdr clock module for proper timing and syncronisation stored the data which was monitored from the solar regulator, the DC-DC converter regulated the voltage to the \SI{6}{\ohm} high power resistor.} 
+	\label{Fig:History}
+\end{figure}
 
 Because of the weather conditions in Marion Island, the pathfinder system can shut down for an extended period without observations. A solar power supply system was selected because the \albatros\ stations are required to run continuously without manual intervention and charging. Therefore, the solar panels need to be appropriately sized, given the power budget and frequently overcast conditions. Also, interferometers are less susceptible to RFI that might be locally generated from the charge controllers and other switching components. Thus, a solar power system solution was implemented on the first autonomous station to run the system autonomously continuously. Total power experiments like \prizm\ are more susceptible to RFI; consequently, a manual charging method is used.   
 
-During the relief voyage, the installation process included mechanical assembly and alignment of the antenna structure, laying coaxial cables, installing three solar panel mounts (with three panels each, for a total of nine panels), and installing a small processing hub consisting of a plastic bin housing the readout electronics, two batteries, and power control electronics. The first autonomous station signal chain shown in Figure~\ref{Fig:albatros1_schem} was installed in April 2019 at the hydroshack site (\ang{46;52.205;}S, \ang{37;50.612;}E) on Marion Island as a first step in testing the technology needed to create the full array. A similar antenna and front end active balun discussed in (\S\ref{s:antenna} and \S\ref{s:fee}) were used, and the back-end electronics and the power system are discussed in detail below.
+During the relief voyage, the installation process included mechanical assembly and alignment of the antenna structure, laying coaxial cables, installing three solar panel mounts (with three panels each, for a total of nine panels), and installing a small processing hub consisting of a plastic bin housing the readout electronics, two batteries, and power control electronics. The first autonomous station signal chain shown in Figure~\ref{Fig:albatros1_schem} was installed in April 2019 at the hydroshack site (\ang{46;52.205;}S, \ang{37;50.612;}E) on Marion Island. The installation was the first step in testing the technologies required to create the full array. A similar antenna and front end active balun discussed in (\S\ref{s:antenna} and \S\ref{s:fee}) were used, and the back-end electronics and the power system are discussed in detail below.
 
 \section{Autonomous Station Signal Chain}
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{Figures/albatros_single_schematic.pdf}
-		\caption{Single-antenna autonomous station block diagram. A dual-polarization LWA antenna, equipped with an active front-end balun, connects via a \SI{50}{\meter} coaxial cables to the back-end readout electronics and is housed in a Faraday cage green dashed box. A second-stage electronics chain consisting of filters and further amplification allows each of the two antenna signals to pass. A SNAP board includes an on-board FPGA that measures channelized baseband and spectra from both inputs and digitizes the signals at 250~Msamp/s. A Raspberry Pi controls the SNAP board, and the baseband data and spectra are obtained. Baseband data are saved to external hard drives. Solar panels charge a 24-V battery bank, which powers the system.}
+		\includegraphics[width=\linewidth]{Figures/albatros_single_schematic}
+		\caption{Single-antenna autonomous station block diagram. A dual-polarization LWA antenna, equipped with an active front-end balun, connects via a \SI{50}{\meter} coaxial cables to the back-end readout electronics and is housed in a Faraday cage green dashed box. Each of the two antenna signals is allowed to pass through a second-stage electronics chain consisting of filters and further amplification. A SNAP board includes an on-board FPGA that measures channelized baseband and spectra from both inputs and digitizes the signals at 250~Msamp/s. The SNAP board is controlled by a Raspberry Pi, and the baseband data and spectra are obtained. Baseband data are stored on the external hard drives. Solar panels charge a 24-V battery bank, which powers the system.}
 		\label{Fig:albatros1_schem}
 	\end{center}
 \end{figure}
@@ -174,7 +191,7 @@ For the autonomous station, the same LWA antenna and FEE are used. The hydroshac
 	\caption{{\bf (a)} One side of the mounting plate with visible power distribution circuitry is shown in the single autonomous station Faraday cage, Trimble Thunderbolt E GPS-disciplined clock module, external hard drives and RPi. {\bf (b)} The analog signal chain mounted in the RF partition on the left and the SNAP board mounted on the right in the single autonomous station Faraday cage.} \label{Fig:faraday}
 \end{figure}
 
-The back-end electronics are very similar to those used for the 2-element pathfinder. However, a few key differences are external hard drives to store data and cross-correlate offline afterward, and a Trimble Thunderbolt E GPS-disciplined clock module. Also, there were revisions done on the enclosure. The enclosure was a laser-cut, folded sheet metal design with captive quarter-turn fasteners to make it easier to assemble and more field-friendly.
+The back-end electronics are very similar to those used for the 2-element pathfinder. However, a few key differences are external hard drives to store data and cross-correlate offline afterward and a Trimble Thunderbolt E GPS-disciplined clock module. Also, there were revisions done on the enclosure. The enclosure was a laser-cut, folded sheet metal design with captive quarter-turn fasteners to make it easier to assemble and more field-friendly.
 
 The Faraday cage shown in Figure~\ref{Fig:46966493985_44aa8ac326_o} and denoted by the green dotted line box in Figure~\ref{Fig:albatros1_schem} is located \SI{50}{\meter} away from the antennas. The analog signal chain shown in Figure~\ref{Fig:47882594521_3895effd86_o} consists of a pair of high- and low-pass filters (Mini-Circuits ZFHP-1R2+ and SLP-150+) that together band-limit the signal to \SIrange{1.2}{140}{\mega\hertz}, and after the filters is the Mini-Circuits ZFL-500+ amplifier with a \SI{25}{\decibel} typical gain. The amplifier operates at a frequency range of \SIrange{0.05}{500}{\mega\hertz}. An AWR simulation shown in Figure~\ref{Fig:auto} shows the plot of a combination of S21 magnitudes in~dB of the low pass filter, high pass filter, and the amplifier. It clearly shows that the cutoff frequency is \SI{\sim 150}{MHz} corresponding to the \SI{\sim 24}{\decibel} magnitude in dB. The autonomous station signal chain response is flatter with higher gain, as shown in Figure~\ref{Fig:comparison}.
 
@@ -187,7 +204,7 @@ The Faraday cage shown in Figure~\ref{Fig:46966493985_44aa8ac326_o} and denoted 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{Figures/comparison.PNG}
+	\includegraphics[width=0.7\linewidth]{Figures/comparison}
 	\caption{The comparison of the pathfinder and autonomous station analog chain response. The autonomous station signal chain response in blue is flatter with higher gain compared to the pathfinder response in pink.}
 	\label{Fig:comparison}
 \end{figure}
@@ -199,12 +216,6 @@ The signals are then digitized at \SI{250}{Msampl/s} by the SNAP board mounted i
 The decrease in bit profundity happens simply after the SNAP board has channelized the baseband, and the cross-channel spillage (due to, e.g., RFI and inclines in RF power as observed by the ADCs) is this way unaffected by the low bit profundity. A polyphase filter bank (PFB) is used in the FPGA firmware to do the channelization. The incoming analog signal passes through a polyphase filter bank after being sampled by the ADC. The PFB module supports out-of-band signal suppression and also generates a flat response across the channel.
 
 An RPi 3B+ controls the SNAP board and gets the auto-and cross-spectra through GPIO pin connections, and the spectra are saved to an on-board SD card. The baseband data is passed through an ethernet from the SNAP board to the RPi and saved to external hard drives. The presentation of gigabit ethernet with the RPi 3B+ model has empowered the high data throughput related to writing baseband. As a benchmark, 1-bit baseband recording of two polarizations more than \SI{10}{\mega\hertz} of transmission capacity yields an approximate data rate of 5~MB/s or 400~GB/day, and 4-bit baseband recording will result in even higher data storage capacity. Currently, a human needs to go to the autonomous station site to copy data and exchange hard drives, which has resulted in the development of the USB multiplexer. The multiplexer switches the drives' \SI{12}{\volt} and \SI{5}{\volt} supplies, guaranteeing that unused drives will not consume any power. One multiplexer can only take up to 8 hard drives. Therefore two multiplexers will be used to accommodate 16 hard drives as specified. The largest and cheapest hard drive capacity available is 8~TB; consequently, the minimum capacity being considered for each autonomous station is 128~TB. The other autonomous station deployment sites are further away from the main base, hence developing a hard drive bank.
-
-\subsection{Correlation}
-
-\attention{[I hate to write this because I know you've put a lot of effort into this section on correlation, but I'll suggest cutting it out entirely.  Many of the sentences need to be clarified significantly, and even with the additional details, I don't think it'll add much meaningful information to your thesis.  Since your work has focused on the hardware development, it's ok to omit a detailed discussion of the correlation, and you can refer the reader to the instrument paper for more information about 1-bit operations.]}
-
-In general, cross-correlation is used when comparing data between two different time series. With 1-bit quantization, the potential range for the time series data correlation coefficient is either -1.0 or +1.0. The more similar the value of the cross-correlation is to 1, the more identical the sets are. Data that correlates is maintained when the cross-correlation between two signals is taken; thus, unwanted noise is removed. Cross-correlation can be conducted over a long period because the data itself is not necessary. Increasing the measurement time results in the signal's accumulation, while the noise is decreased. The front end is allowed to be noisier by using cross-correlation to minimize noise, and noise can be traded for linearity, which occurs when the input signal is attenuated. The accuracy of the measurement of signal intensity is less critical for spectral sensing in cognitive radio. It is more important to detect whether there is a signal at all and at what frequency. The frequencies that cause aliasing are all frequencies that are above the Nyquist frequency for a baseband system. In the Nyquist band, these frequencies are folded back and are perceived during sampling as lower frequencies. Cross-correlation operations consist of delays, multiplications, and additions. In the analog domain, these operations can add noise to the signal. Since the two signals are already mixed, noise can not be minimized by the cross-correlation mechanism itself. This makes cross-correlation the favored approach in the digital realm.~\citep{essay61335}. The offline cross-correlation technique that is applied in the autonomous station data analysis has similar characteristics as discussed.
 
 \subsection{Solar Power Supply System}
 
@@ -263,24 +274,7 @@ The three groups' three connections are connected parallel to the Victron BlueSo
 
 \begin{figure}
 	\centering
-	\begin{subfigure}[t]{\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{Figures/station}
-		\caption{April 2019 deployment of the first \albatros\ autonomous station was a success. The mounted solar panels and the LWA antenna are visible. The hardware for the first autonomous station was enclosed in the orange container, and it was only present temporarily during the takeover period.}
-		\label{Fig:station}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[t]{0.52\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{Figures/rooftop1} 
-		\caption{} \label{Fig:rooftop1}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[t]{0.47\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{Figures/rooftop2}
-		\caption{} \label{Fig:rooftop2}
-	\end{subfigure}
-	\caption{{\bf (b)} A prototype solar power supply setup. The prototype of the proposed system was tested on the roof of H Block at the UKZN. The solar panel which was used was the Enersol 300 and the control electronics are enclosed in the weather proof plastic bin. {\bf (c)} Interior of the enclosure. Inside the enclosure was the solar regulator which was monitored via a communication port, a single\SI{12}{\volt} \SI{150}{\ampere \hour} battery, an Arduino board which was programmed for serial to Universal Serial Bus (USB) communication, the Rpi which was connected to the sdr clock module for proper timing and syncronisation stored the data which was monitored from the solar regulator, the DC-DC converter regulated the voltage to the \SI{6}{\ohm} high power resistor.} 
-	\label{Fig:History}
+	\includegraphics[width=\linewidth]{Figures/station}
+	\caption{April 2019 deployment of the first \albatros\ autonomous station was a success. The mounted solar panels and the LWA antenna are visible. The hardware for the first autonomous station was enclosed in the orange container, and it was only present temporarily during the takeover period.}
+	\label{Fig:station}
 \end{figure}
