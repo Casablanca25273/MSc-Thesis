@@ -26,7 +26,6 @@ Figure~\ref{Fig:PRZIM_block} shows the original 2017 configuration of the signal
 
 Each petal has three trapezoidal facets angled at various angles with respect to the ground. The angles were selected to minimize spectral variation in the beam shape. The antenna beam pattern's width has a direct dependence on the angles of the trapezoidal facets, and the height of the antenna above the ground changes the beam symmetry~\citep{2014ApJ...782L...9V}.  The \prizm\ antenna structure was redesigned with respect to the original SCI-HI design to survive the high winds on Marion Island, as shown in Figure~\ref{Fig:tel}.  
 
-
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Figures/tel}
@@ -157,7 +156,6 @@ The terminal blocks for power and housekeeping signals have 16 positions total, 
 	\label{Tab:Pinout}
 \end{table}
 
-
 \subsection{Second Stage Electronics}
 
 A revised Faraday cage for the SSE was designed using Autodesk Inventor Professional 2018, and the sheet metal box is shown in Figure~\ref{Fig:Enclosed}. The enclosure was revised so that each antenna has its SSE box.  There was no longer shared housekeeping RPi that binds the SNAP boards together. That was the main driver for separating the SNAP boards/ enclosures.
@@ -170,7 +168,6 @@ The switch circuit was redesigned as shown in Figure~\ref{Fig:newcontrol} by the
 	\caption{Schematic diagram of the newly desined switch control circuit. In the new design, six out of eight MOSFET output optocouplers are used to control the 6-position switch, and the other two are used for reset and noise source. The circuit has a built-in RTC. RPi's GPIO pins are connected to the RTC and the optocouplers to controls the functionality.}
 	\label{Fig:newcontrol}
 \end{figure}
-
 
 \begin{figure}
 	\centering
