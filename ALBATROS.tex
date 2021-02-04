@@ -72,7 +72,7 @@ The back-end electronics are housed in the Faraday cage shown in Figure~\ref{Fig
 		\includegraphics[width=\linewidth]{Figures/47093128324_04792aa5c5_o}
 		\caption{} \label{Fig:47093128324_04792aa5c5_o}
 	\end{subfigure}
-	\caption{{\bf (a)} \albatros\ back-end electronics housed in the Faraday cage. The box mounts all components back-to-back on a central shelf so that everything can be accessed by opening opposing sides. One side of the mounting plate shows the amplifiers, pair of high- and low-pass filters, bias-tees, Valon 5007 frequency synthesizer module, RPi and Adafruit Ultimate GPS module. Component not visible on this side are mounted on the other side of the mounting plate. {\bf (b)} The bottom side of the \albatros\ Faraday cage, showing the mounted SNAP board and the regulatory circuit.} \label{Fig:faraday1}
+	\caption{{\bf (a)} The Faraday cage housing the \albatros\ back-end electronics. The box mounts all components back-to-back on a central shelf so that everything can be accessed by opening opposing sides. One side of the mounting plate shows the amplifiers, pair of high- and low-pass filters, bias-tees, Valon 5007 frequency synthesizer module, RPi and Adafruit Ultimate GPS module. Component not visible on this side are mounted on the other side of the mounting plate. {\bf (b)} The bottom side of the \albatros\ Faraday cage, showing the mounted SNAP board and the regulatory circuit.} \label{Fig:faraday1}
 \end{figure}
 
 \begin{figure}
@@ -112,7 +112,7 @@ The two-element pathfinder system is powered using four \SI{12}{\volt}, \SI{200}
 
 \section{Overview of Autonomous Stations}\label{s:autonomous}
 
-The final ALBATROS array will consist of ten autonomous antenna stations separated by maximum baseline lengths of \SI{\sim 20}{\kilo \meter} as shown in \autoref{Fig:marion_map}. There are eight remaining planned installation sites. The Hydro shack and the \prizm\ site already have infrastructure installed, and Katedraal will remain unused. The ten installation sites (existing and planned) for the ALBATROS array have a ring-like pattern that is appropriate for imaging and produces an FWHM synthesized beam of $7'$ at \SI{5}{\mega\hertz} as shown in Figure~\ref{Fig:marion_map_beam}. The array beam promises an improved ($>10$ times better) resolution over existing measurements to date. Thus far, the ALBATROS main goal will be to map Galactic foregrounds at high resolution at low frequencies, which is crucial before doing cosmological observations of the dark ages. 
+The final ALBATROS array will consist of ten autonomous antenna stations separated by maximum baseline lengths of \SI{\sim 20}{\kilo \meter} as shown in \autoref{Fig:marion_map}. There are eight remaining planned installation sites. The Hydro shack and the \prizm\ site already have infrastructure installed, and Katedraal will remain unused. The ten installation sites (existing and planned) for the ALBATROS array have a ring-like pattern that is appropriate for imaging and produces an FWHM synthesized beam of $7'$ at \SI{5}{\mega\hertz} as shown in Figure~\ref{Fig:marion_beam}. The array beam promises an improved ($>10$ times better) resolution over existing measurements to date. Thus far, the ALBATROS main goal will be to map Galactic foregrounds at high resolution at low frequencies, which is crucial before doing cosmological observations of the dark ages. 
 
 In April 2019, I was part of the deployment team in Marion Island, and I am going to discuss in detail the tasks associated with \albatros\ that we managed to complete during the three-week relief voyage.  
 
@@ -129,8 +129,7 @@ In April 2019, I was part of the deployment team in Marion Island, and I am goin
 		\includegraphics[width=\linewidth]{Figures/marion_beam_huts_2020}
 		\caption{} \label{Fig:marion_beam}
 	\end{subfigure}
-	\caption{{\bf (a)} Map of Marion Island.  At present, the \albatros\ pathfinder antennas are located at the \prizm\ site and the hydro shack (gray markers). The black markers indicate the eight shore huts that will be used for potential installations of the \albatros\ antenna.  The white markers show the other infrastructure points available that will not be used for antennas. {\bf (b)} Synthesized beam at 5~MHz at zenith from the full \albatros\ array, using the existing and planned
-		installation locations shown on the map.  A synthesized beam with a FWHM of $\sim7'$ is obtained using an octave of bandwidth spanning 3.5--7~MHz in a single snapshot.}
+	\caption{{\bf (a)} Marion Island map.  The \albatros\ pathfinder antennas are presently located at the \prizm\ site and the hydro shack (gray markers). The ones marked in black indicate the eight shore huts that will be used for potential installations of the \albatros\ antennas.  The white markers show the other infrastructure points available that will not be used for antennas. {\bf (b)} 5~MHz synthesized beam at zenith from the complete \albatros\ array, using the current and scheduled installation locations shown on the map.  A synthesized beam is obtained using an octave of bandwidth spanning 3.5--7~MHz in a single snapshot with a FWHM of $\sim7'$.}
 	\label{Fig:marion_map_beam}
 \end{figure}
 
@@ -166,7 +165,7 @@ During the relief voyage, the installation process included mechanical assembly 
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\linewidth]{Figures/albatros_single_schematic}
-		\caption{Single-antenna autonomous station block diagram. A dual-polarization LWA antenna, equipped with an active front-end balun, connects via a \SI{50}{\meter} coaxial cables to the back-end readout electronics and is housed in a Faraday cage green dashed box. Each of the two antenna signals is allowed to pass through a second-stage electronics chain consisting of filters and further amplification. A SNAP board includes an on-board FPGA that measures channelized baseband and spectra from both inputs and digitizes the signals at 250~Msamp/s. The SNAP board is controlled by a Raspberry Pi, and the baseband data and spectra are obtained. Baseband data are stored on the external hard drives. Solar panels charge a 24-V battery bank, which powers the system.}
+		\caption{Autonomous station single-antenna block diagram. A dual-polarization LWA antenna, fitted with an active front-end balun, connects to the back-end readout electronics through \SI{50}{\meter} coaxial cables and is housed in a green dashed Faraday cage box. A second-stage electronics chain consisting of filters and further amplification allows the two antenna signals to pass through. An on-board FPGA is built-in on a SNAP board that measures channelized baseband and spectra from both inputs and digitizes the signals at 250~Msamp/s. The SNAP board is controlled by a Raspberry Pi, and the baseband data and spectra are obtained. Baseband data are stored on the external hard drives. Solar panels charge a 24-V battery bank, which powers the system.}
 		\label{Fig:albatros1_schem}
 	\end{center}
 \end{figure}
@@ -215,7 +214,7 @@ The signals are then digitized at \SI{250}{Msampl/s} by the SNAP board mounted i
 
 The decrease in bit profundity happens simply after the SNAP board has channelized the baseband, and the cross-channel spillage (due to, e.g., RFI and inclines in RF power as observed by the ADCs) is this way unaffected by the low bit profundity. A polyphase filter bank (PFB) is used in the FPGA firmware to do the channelization. The incoming analog signal passes through a polyphase filter bank after being sampled by the ADC. The PFB module supports out-of-band signal suppression and also generates a flat response across the channel.
 
-An RPi 3B+ controls the SNAP board and gets the auto-and cross-spectra through GPIO pin connections, and the spectra are saved to an on-board SD card. The baseband data is passed through an ethernet from the SNAP board to the RPi and saved to external hard drives. The presentation of gigabit ethernet with the RPi 3B+ model has empowered the high data throughput related to writing baseband. As a benchmark, 1-bit baseband recording of two polarizations more than \SI{10}{\mega\hertz} of transmission capacity yields an approximate data rate of 5~MB/s or 400~GB/day, and 4-bit baseband recording will result in even higher data storage capacity. Currently, a human needs to go to the autonomous station site to copy data and exchange hard drives, which has resulted in the development of the USB multiplexer. The multiplexer switches the drives' \SI{12}{\volt} and \SI{5}{\volt} supplies, guaranteeing that unused drives will not consume any power. One multiplexer can only take up to 8 hard drives. Therefore two multiplexers will be used to accommodate 16 hard drives as specified. The largest and cheapest hard drive capacity available is 8~TB; consequently, the minimum capacity being considered for each autonomous station is 128~TB. The other autonomous station deployment sites are further away from the main base, hence developing a hard drive bank.
+A SNAP board is controlled by the RPi 3B+ and gets the auto-and cross-spectra through GPIO pin connections, and the spectra are saved to an on-board SD card. The baseband data is passed through an ethernet from the SNAP board to the RPi and saved to external hard drives. The presentation of gigabit ethernet with the RPi 3B+ model has empowered the high data throughput related to writing baseband. As a benchmark, 1-bit baseband recording of two polarizations more than \SI{10}{\mega\hertz} of transmission capacity yields an approximate data rate of 5~MB/s or 400~GB/day, and 4-bit baseband recording will result in even higher data storage capacity. Currently, a human needs to go to the autonomous station site to copy data and exchange hard drives, which has resulted in the development of the USB multiplexer. The multiplexer switches the drives' \SI{12}{\volt} and \SI{5}{\volt} supplies, guaranteeing that unused drives will not consume any power. One multiplexer can only take up to 8 hard drives. Therefore two multiplexers will be used to accommodate 16 hard drives as specified. The largest and cheapest hard drive capacity available is 8~TB; consequently, the minimum capacity being considered for each autonomous station is 128~TB. The other autonomous station deployment sites are further away from the main base, hence developing a hard drive bank.
 
 \subsection{Solar Power Supply System}
 
@@ -268,7 +267,7 @@ The three groups' three connections are connected parallel to the Victron BlueSo
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Figures/power_box_interior}
-	\caption{The power logging and control system, the Victron charge controller, and an EMI filter are housed in an aluminum box.}
+	\caption{An aluminum box houses the power logging and control system, the Victron charge controller and an EMI filter.}
 	\label{Fig:power_box_interior}
 \end{figure}
 

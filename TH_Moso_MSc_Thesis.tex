@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage[left=3cm,right=3cm,top=2cm,bottom=3cm]{geometry}
 %\usepackage[small,compact]{titlesec}
 \usepackage{setspace}
 \usepackage{hyperref,cleveref}
@@ -25,7 +25,7 @@
 \usepackage{geometry}
 \usepackage{upgreek}
 \usepackage[square,sort&compress]{natbib}
-
+\usepackage{datetime}
 %\input{defs}
 
 % Colors for links
@@ -34,10 +34,10 @@
 \colorlet{mycitecolor}{orange}
 \colorlet{myurlcolor}{red}
 \hypersetup{
-  linkcolor  = mylinkcolor!\myshade!black,
-  citecolor  = mycitecolor!\myshade!black,
-  urlcolor   = myurlcolor!\myshade!black,
-  colorlinks = true,
+	linkcolor  = mylinkcolor!\myshade!black,
+	citecolor  = mycitecolor!\myshade!black,
+	urlcolor   = myurlcolor!\myshade!black,
+	colorlinks = true,
 }
 % Color for strikethrough text
 \setstcolor{red}
@@ -66,6 +66,8 @@
 \newcommand{\jrasc}{Journal of the Royal Astronomical Society of Canada}
 \newcommand{\nat}{Nature Journal}
 \newcommand{\ea}{Experimental Astronomy}
+\newdateformat{monthyeardate}{%
+	\monthname[\THEMONTH], \THEYEAR}
 
 
 \begin{document}
@@ -74,77 +76,101 @@
 		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
 		
 		\begin{center}
-		\begin{figure}[ht]
-			\centering
-				\includegraphics[width=0.5\textwidth]{Figures/UKZNLOGO.png}\\[1cm]
-		\end{figure}
+			\begin{figure}[ht]
+				\centering
+				\includegraphics[width=0.7\textwidth]{Figures/UKZNLOGO.png}\\[1cm]
+			\end{figure}
+			
+			\LARGE {\textbf {Low-Frequency Observations of the Radio\\[0.3cm Sky from Marion Island]}}\\[1cm]
+			{By}\\[0.5cm]
+			\textbf {\Large {Tankiso H. Moso}}\\[0.5cm]
+			{\small Submitted in the School of Mathematics, Statistics and Computer Sciences\\in  fulfilment of the academic requirements for the\\Master of Science Degree in Applied Mathematics\\at the\\University of Kwa-Zulu Natal, Westville Campus}\\[3cm]
+			
+			\begin{minipage}{0.45\textwidth}
+				\begin{flushleft} \large
+					\hrulefill\\
+					Supervisor Signature \\
+					Prof. H. C. Chiang % Supervisor's Name
+				\end{flushleft}
+			\end{minipage}
+			~
+			\begin{minipage}{0.45\textwidth}
+				\begin{flushright} \large
+					\hrulefill\\
+					Co-Supervisor Signature \\
+					Prof. K. Moodley % Supervisor's Name
+				\end{flushright}
+			\end{minipage}\\[3cm]
+			~
+			\begin{minipage}{0.5\textwidth}
+				\begin{center} \large
+					\hrulefill\\
+					Student Signature\\
+					Tankiso H. Moso % Your name
+				\end{center}
+			\end{minipage}\\[2cm]
+			
+			{\large \monthyeardate\today}\\ % Date, change the \today to a set date if you want to be precise
+		\end{center}
 		
-		\LARGE {\textbf {Low-Frequency Observations of the Radio\\[0.3cm Sky from Marion Island]}}\\[1cm]
-	    {By}\\[0.5cm]
-		\textbf {\Large {Tankiso H. Moso}}\\[0.5cm]
-		{\small Submitted in the School of Mathematics, Statistics and Computer Sciences\\in  fulfilment of the academic requirements for the\\Master of Science Degree in Applied Mathematics\\at the\\University of Kwa-Zulu Natal}\\[1cm]
 		
-		{\large Supervisor: Prof. H. C. Chiang}\\[0.1cm]
-		{\large Co-Supervisor: Prof. K. Moodley}\\[3cm]
-		
-		{\large \today}\\[0cm] % Date, change the \today to a set date if you want to be precise
-		\end{center}	
 	\end{titlepage}
-
-\pagenumbering{roman}
-
-\addcontentsline{toc}{section}{Declaration}
-\section*{Declaration - Plagiarism}
-
-I, Tankiso Moso, declare that
-
-\begin{enumerate}
-	\item The research reported in this thesis, except where otherwise indicated, is my original research.
-	\item This thesis has not been submitted for any degree or examination at any other university.
-	\item This thesis does not contain other persons’ data, pictures, graphs or other information, unless specifically acknowledged as being sourced from other persons.
-	\item This thesis does not contain other persons' writing, unless specifically acknowledged as being sourced from other researchers.  Where other written sources have been quoted, then:
-\begin{enumerate}
-	\item Their words have been re-written but the general information attributed to them has been referenced.
-	\item Where their exact words have been used, then their writing has been placed in italics and inside quotation marks, and referenced.
-\end{enumerate}
+	
+	\pagenumbering{roman}
+	
+	\addcontentsline{toc}{section}{Declaration}
+	\section*{Declaration - Plagiarism}
+	
+	I, Tankiso H. Moso, declare that
+	
+	\begin{enumerate}
+		\item The research reported in this thesis, except where otherwise indicated, is my original research.
+		\item This thesis has not been submitted for any degree or examination at any other university.
+		\item This thesis does not contain the data, photographs, graphs, or other material of other persons unless expressly recognized as obtained from other people.
+		\item This thesis does not contain other persons' writing unless expressly recognized as having been sourced from other researchers. Where additional written sources have been cited, then:
+		\begin{enumerate}
+			\item Their words have been re-written, but the general information attributed to them has been referenced.
+			\item Where their exact words have been used, then their writing has been placed in italics and inside quotation marks and referenced.
+		\end{enumerate}
 		
-	\item This thesis does not contain text, graphics or tables copied and pasted from the internet, unless specifically acknowledged, and the source being detailed in the thesis and in the References section.
-\end{enumerate}
-\vspace{0.5cm}
+		\item This thesis does not contain text, graphics or tables copied and pasted from the internet unless specifically acknowledged, and the source being detailed in the thesis and the Bibliography section.
+	\end{enumerate}
+	\vspace{2cm}
 	
-\begin{table}[h]
-\begin{tabular}{c}
-\hline
-Tankiso H. Moso\\
-\end{tabular}
-\end{table}	
-{\large \today}\\ % Date, change the \today to a set date if you want to be precise %Change the date to your date of submission
-
-\newpage
-\addcontentsline{toc}{section}{Publication List}
-\input{Publication}
-
-\newpage
-\addcontentsline{toc}{section}{Abstract}
-\input{Abstract}
-
-\newpage
-\addcontentsline{toc}{section}{Acknowledgements}
-\input{Acknowledgements}
-
-\newpage
-\renewcommand\contentsname{Table of Contents} %This changes the original latex contents name to 'Table of Contents'
-\tableofcontents\newpage %This adds the table of contents to your thesis.
+	\begin{minipage}{0.5\textwidth}
+		\begin{center} \large
+			\hrulefill\\
+			Tankiso H. Moso\\[1cm]
+			
+			{\large \today} % Date, change the \today to a set date if you want to be precise %Change the date to your date of submission
+		\end{center}
+	\end{minipage}\\[2cm]	
 	
-\pagenumbering{arabic}	
-
-\input{Introduction}
-\input{Site}
-\input{ALBATROS}
-\input{PRIZM}
-\input{Conclusion}
-
-\bibliographystyle{unsrtnat}   
-\bibliography{TH_Moso_MSc_Thesis}{}
-    
+	\newpage
+	\addcontentsline{toc}{section}{Publication List}
+	\input{Publication}
+	
+	\newpage
+	\addcontentsline{toc}{section}{Abstract}
+	\input{Abstract}
+	
+	\newpage
+	\addcontentsline{toc}{section}{Acknowledgements}
+	\input{Acknowledgements}
+	
+	\newpage
+	\renewcommand\contentsname{Table of Contents} %This changes the original latex contents name to 'Table of Contents'
+	\tableofcontents\newpage %This adds the table of contents to your thesis.
+	
+	\pagenumbering{arabic}	
+	
+	\input{Introduction}
+	\input{Site}
+	\input{ALBATROS}
+	\input{PRIZM}
+	\input{Conclusion}
+	
+	\bibliographystyle{unsrtnat}   
+	\bibliography{TH_Moso_MSc_Thesis}{}
+	
 \end{document}
